@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
-import { PostListComponent }  from './postList/post-list';
+import { PostListComponent }  from './components/postList/post-list';
 import { PostService }  from './services/post.service';
 import { AppRoutingModule } from './app-routing.module';
 import { PostResolve } from './services/post-resolve.service';
