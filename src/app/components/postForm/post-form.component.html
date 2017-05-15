@@ -1,0 +1,63 @@
+<form #formRef="ngForm" (submit)="submitPost(formRef)" novalidate>
+    
+    <div>
+        <input
+            type="text"
+            name="title"
+            ngModel
+            placeholder="Título"
+            class="u-full-width"
+            required>
+    </div>
+    
+    <div>
+        <textarea
+            name="intro"
+            ngModel
+            placeholder="Introduce tu historia"
+            class="u-full-width georgia-font"
+            required></textarea>
+    </div>
+
+    <div>
+        <textarea
+            name="content"
+            ngModel
+            placeholder="Cuenta tu historia"
+            class="u-full-width georgia-font"
+            required></textarea>
+    </div>
+
+    <div>
+        <input
+            type="text"
+            name="url_media"
+            ngModel
+            placeholder="url media"
+            class="u-full-width">
+    </div>
+
+    <div>
+        <div>
+            <label (click)="setScheduling(false)">
+                <span class="radio-input" [class.active]="!publicationDateScheduled"></span>
+                No programar
+            </label>
+        </div>
+        <div>
+            <label (click)="setScheduling(true)">
+                <span class="radio-input" [class.active]="publicationDateScheduled"></span>
+                Publicar en:
+            </label>
+        </div>
+        <div>
+            <input
+                type="datetime-local"
+                name="publicate_at"
+                [min]="nowDatetimeLocal"
+                [ngModel]="nowDatetimeLocal">
+        </div>
+    </div>
+
+    <button type="submit" class="button-primary u-pull-right" [disabled]="formRef.invalid">Publicar</button>
+</form>

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router"
 import { PostListComponent }  from './components/postList/post-list';
+import { PostFormComponent }  from './components/postForm/post-form';
+import { LoginComponent }  from './components/login/login';
 import { PostResolve } from "./services/post-resolve.service"
 
 const rout: Routes = [
@@ -12,6 +14,14 @@ const rout: Routes = [
         resolve:{
             posts: PostResolve
         }
+    },
+    {
+        path:"new-post",
+        component: PostFormComponent,
+    },
+    {
+        path:"login",
+        component: LoginComponent,
     },
     {
         path:"**",

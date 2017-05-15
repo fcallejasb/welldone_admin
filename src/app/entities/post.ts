@@ -18,4 +18,20 @@ export class Post{
         //public post_response: Post[],
         //public user_mention: User[]
     ){}
+
+    static fromJson(json: any): Post {
+        return new Post(
+            json.id,
+            json.title,
+            json.intro,
+            json.content,
+            json.url_media,
+            json.categories,
+            json.publicate_at,
+            json.state,
+            json.type,
+            json.author,
+            json.likes
+        );
+    }
 }

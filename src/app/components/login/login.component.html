@@ -1,0 +1,24 @@
+<form #formRef="ngForm" (submit)="loginUser(formRef)" novalidate>
+    
+    <div>
+        <input
+            type="text"
+            name="username"
+            ngModel
+            placeholder="Usuario"
+            class="u-full-width"
+            required>
+    </div>
+
+    <div>
+        <input
+            type="password"
+            name="password"
+            ngModel
+            placeholder="Contraseña"
+            class="u-full-width"
+            required>
+    </div>
+
+    <button type="submit" class="button-primary u-pull-right" [disabled]="formRef.invalid">Login</button>
+</form>
