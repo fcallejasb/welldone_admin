@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router"
 import { PostListComponent }  from './components/postList/post-list';
 import { PostFormComponent }  from './components/postForm/post-form';
 import { LoginComponent }  from './components/login/login';
+import { CreateUserComponent }  from './components/createUser/create-user';
 import { PostResolve } from "./services/post-resolve.service"
 
 const rout: Routes = [
@@ -22,6 +23,10 @@ const rout: Routes = [
     {
         path:"login",
         component: LoginComponent,
+    },
+    {
+        path:"register",
+        component: CreateUserComponent,
     },
     {
         path:"**",

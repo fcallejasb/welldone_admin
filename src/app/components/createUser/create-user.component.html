@@ -1,0 +1,64 @@
+<form #formRef="ngForm" (submit)="createUser(formRef)" novalidate>
+    
+    <div>
+        <input
+            type="text"
+            name="username"
+            ngModel
+            placeholder="Usuario"
+            class="u-full-width"
+            required>
+    </div>
+
+    <div>
+        <input
+            type="text"
+            name="first_name"
+            ngModel
+            placeholder="Nombre"
+            class="u-full-width">
+    </div>
+
+    <div>
+        <input
+            type="text"
+            name="last_name"
+            ngModel
+            placeholder="Apellido"
+            class="u-full-width">
+    </div>
+
+    <div>
+        <input
+            type="text"
+            name="email"
+            ngModel
+            placeholder="Email"
+            class="u-full-width"
+            required>
+    </div>
+
+    <div>
+        <input
+            type="password"
+            name="password1"
+            ngModel
+            placeholder="Contraseña"
+            class="u-full-width"
+            required>
+    </div>
+
+    <div>
+        <input
+            type="password"
+            name="password2"
+            ngModel
+            placeholder="Confirmar Contraseña"
+            class="u-full-width"
+            required>
+    </div>
+
+    <div class="error">{{_msgRegistration}}</div>
+
+    <button type="submit" class="button-primary u-pull-right" [disabled]="formRef.invalid">Registrar</button>
+</form>

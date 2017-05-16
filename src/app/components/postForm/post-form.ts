@@ -54,7 +54,7 @@ export class PostFormComponent implements OnInit {
     submitPost(form: FormGroup): void {
         let post: Post = Post.fromJson(form.value);
         post.likes = 0;
-        post.author = new User(11,"pepito","Pepe","pepe@correo.com") //TODO: Tomarlo del usuario logeado
+        post.author = new User(11,"user1","1","usu@correo.com","Usuario","") //TODO: Tomarlo del usuario logeado
         post.publicate_at = new Date() //TODO: cómo se va a guardar la fecha
         this.postSubmitted.emit(post);
     }

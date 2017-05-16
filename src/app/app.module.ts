@@ -9,12 +9,14 @@ import { PostListComponent }  from './components/postList/post-list';
 import { PostService }  from './services/post.service';
 import { LoginService }  from './services/login.service';
 import { BackendUriProvider} from "./services/settings.service";
+import { UserDataService} from "./services/userdata.service";
 
 import { AppRoutingModule } from './app-routing.module';
 import { PostResolve } from './services/post-resolve.service';
 import { HeaderMenuComponent }  from './components/headerMenu/header-menu';
 import { PostFormComponent }  from './components/postForm/post-form';
 import { LoginComponent }  from './components/login/login';
+import { CreateUserComponent }  from './components/createUser/create-user';
 
 @NgModule({
   imports:      [ 
@@ -28,13 +30,15 @@ import { LoginComponent }  from './components/login/login';
     PostListComponent,
     HeaderMenuComponent,
     PostFormComponent,
-    LoginComponent
+    LoginComponent,
+    CreateUserComponent
   ],
   providers:[
     BackendUriProvider,
     PostService,
     PostResolve,
-    LoginService
+    LoginService,
+    UserDataService
   ],
   bootstrap:    [ AppComponent ]
 })
