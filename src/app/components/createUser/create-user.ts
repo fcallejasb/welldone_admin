@@ -16,6 +16,7 @@ import { UserDataService } from '../../services/userdata.service';
 export class CreateUserComponent implements OnDestroy {
     private _loginSubscription: Subscription;
     public _msgRegistration: String;
+    public _vMsg: boolean = false;
 
     constructor(
         private _loginService: LoginService,
@@ -33,14 +34,16 @@ export class CreateUserComponent implements OnDestroy {
         this._loginSubscription = this._loginService.registerUser(user)
         .subscribe(
             (data) => {
+                this._vMsg = false;
                 this._userDataService.currentUser = data;
                 this._router.navigate(["/post"]);
             },
             (error) => {
                 if(error.status == 400){
                     this._msgRegistration = error._body;
+                    console.log(JSON.parse(error._body));
+                    this._vMsg = true;
                 }
-                console.error(error);
             }
         );
     }

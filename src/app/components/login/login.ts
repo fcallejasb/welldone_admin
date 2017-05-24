@@ -16,6 +16,7 @@ import { UserDataService } from '../../services/userdata.service';
 export class LoginComponent implements OnDestroy {
     private _loginSubscription: Subscription;
     public _msgLogin: String;
+    public _vMsg: boolean = false;
 
     @Output() _loginEvent: EventEmitter<User> = new EventEmitter();
 
@@ -41,9 +42,9 @@ export class LoginComponent implements OnDestroy {
             },
             (error) => {
                 if(error.status == 400){
+                    this._vMsg = true;
                     this._msgLogin = JSON.parse(error._body)['non_field_errors'][0];
                 }
-                console.error(error);
             }
         );
     }

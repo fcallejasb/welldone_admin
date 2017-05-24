@@ -1,8 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Router } from "@angular/router";
 import { FormGroup } from "@angular/forms";
 
 import { Post } from '../../entities/post';
 import { User } from '../../entities/user';
+
+import { UserDataService } from '../../services/userdata.service';
 
 @Component({
     selector: "post-form",
@@ -11,6 +14,11 @@ import { User } from '../../entities/user';
 })
 export class PostFormComponent implements OnInit {
 
+    public curUser : User;
+    constructor(
+        private _userDataService: UserDataService,
+        private _router: Router) { }
+
     nowDatetimeLocal: string;
     publicationDateScheduled: boolean = false;
 
@@ -18,6 +26,11 @@ export class PostFormComponent implements OnInit {
 
     ngOnInit(): void {
         this.nowDatetimeLocal = this._formatDateToDatetimeLocal(new Date());
+        if(this._userDataService.currentUser){
+            this.curUser = this._userDataService.currentUser;
+        }else{
+            this._router.navigate(["/login"]);
+        }
     }
 
     private _formatDateToDatetimeLocal(date: Date) {
@@ -54,7 +67,7 @@ export class PostFormComponent implements OnInit {
     submitPost(form: FormGroup): void {
         let post: Post = Post.fromJson(form.value);
         post.likes = 0;
-        post.author = new User(11,"user1","1","usu@correo.com","Usuario","") //TODO: Tomarlo del usuario logeado
+        post.author = this.curUser;
         post.publicate_at = new Date() //TODO: cómo se va a guardar la fecha
         this.postSubmitted.emit(post);
     }

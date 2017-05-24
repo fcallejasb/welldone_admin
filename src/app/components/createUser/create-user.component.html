@@ -1,64 +1,74 @@
 <form #formRef="ngForm" (submit)="createUser(formRef)" novalidate>
     
-    <div>
+    <div class="form-group">
+        <label for="username">Nombre de Usuario</label>
         <input
             type="text"
             name="username"
             ngModel
             placeholder="Usuario"
-            class="u-full-width"
+            class="form-control"
+            id="username"
             required>
     </div>
 
-    <div>
+    <div class="form-group">
+        <label for="first_name">Nombre</label>
         <input
             type="text"
             name="first_name"
+            id="first_name"
             ngModel
             placeholder="Nombre"
-            class="u-full-width">
+            class="form-control">
     </div>
 
-    <div>
+    <div class="form-group">
+        <label for="last_name">Apellido</label>
         <input
             type="text"
             name="last_name"
+            id="last_name"
             ngModel
             placeholder="Apellido"
-            class="u-full-width">
+            class="form-control">
     </div>
 
-    <div>
+    <div class="form-group">
+        <label for="email">Email</label>
         <input
             type="text"
             name="email"
+            id="email"
             ngModel
             placeholder="Email"
-            class="u-full-width"
+            class="form-control"
             required>
     </div>
 
-    <div>
+    <div class="form-group">
+        <label for="password1">Contraseña</label>
         <input
             type="password"
             name="password1"
+            id="password1"
             ngModel
-            placeholder="Contraseña"
-            class="u-full-width"
+            placeholder="Mínimo 8 caracteres"
+            class="form-control"
             required>
     </div>
 
-    <div>
+    <div class="form-group">
+        <label for="password1">Confirmar Contraseña</label>
         <input
             type="password"
             name="password2"
             ngModel
-            placeholder="Confirmar Contraseña"
-            class="u-full-width"
+            placeholder="Igual a la anterior"
+            class="form-control"
             required>
     </div>
 
-    <div class="error">{{_msgRegistration}}</div>
-
-    <button type="submit" class="button-primary u-pull-right" [disabled]="formRef.invalid">Registrar</button>
+    <div class="alert alert-danger" *ngIf="_vMsg">{{_msgRegistration}}</div>
+    <button type="submit" class="btn btn-primary" [disabled]="formRef.invalid">Registrar</button>
 </form>

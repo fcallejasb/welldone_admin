@@ -18,6 +18,8 @@ import { PostFormComponent }  from './components/postForm/post-form';
 import { LoginComponent }  from './components/login/login';
 import { CreateUserComponent }  from './components/createUser/create-user';
 
+//import { AlertModule } from 'ngx-bootstrap/alert';
+
 @NgModule({
   imports:      [ 
     BrowserModule,
