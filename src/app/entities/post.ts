@@ -4,17 +4,18 @@ import { Categories } from '../entities/categories';
 export class Post{
 
     constructor(
-        public post_id: number,
+        public id: number,
         public title: string,
         public intro: string,
         public content: string,
         public url_media: string,
-        public categories: Categories[],
-        public publicate_at: Date,
-        public state: string,
-        public type: string,
-        public author: User,
-        public likes: number,
+        //public categories: Categories[],
+        public publicated_at: String,
+        //public state: string,
+        //public type: string,
+        public author: number,
+        public author_username: String
+        //public likes: number,
         //public post_response: Post[],
         //public user_mention: User[]
     ){}
@@ -26,12 +27,13 @@ export class Post{
             json.intro,
             json.content,
             json.url_media,
-            json.categories,
-            json.publicate_at,
-            json.state,
-            json.type,
+            //json.categories,
+            json.publicated_at,
+            //json.state,
+            //json.type,
             json.author,
-            json.likes
+            json.author_username,
+            //json.likes
         );
     }
 }

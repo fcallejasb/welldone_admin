@@ -10,6 +10,7 @@ import { PostService }  from './services/post.service';
 import { LoginService }  from './services/login.service';
 import { BackendUriProvider} from "./services/settings.service";
 import { UserDataService} from "./services/userdata.service";
+import { HttpHeaderService } from './services/httpheader.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { PostResolve } from './services/post-resolve.service';
@@ -40,7 +41,8 @@ import { CreateUserComponent }  from './components/createUser/create-user';
     PostService,
     PostResolve,
     LoginService,
-    UserDataService
+    UserDataService,
+    HttpHeaderService
   ],
   bootstrap:    [ AppComponent ]
 })

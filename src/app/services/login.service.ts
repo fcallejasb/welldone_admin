@@ -15,7 +15,7 @@ export class LoginService{
 
     login(user: User): Observable<User> {
         return this._http
-            .post(`${this._backendUri}api/rest-auth/login/`, user)
+            .post(`${this._backendUri}:8000/api/rest-auth/login/`, user)
             .map((respuesta: Response)=>{
                 let resp = respuesta.json();
                 sessionStorage['jwt'] = resp.token;
@@ -27,7 +27,7 @@ export class LoginService{
 
     registerUser(user: UserReg): Observable<User> {
         return this._http
-            .post(`${this._backendUri}api/rest-auth/registration/`, user)
+            .post(`${this._backendUri}:8000/api/rest-auth/registration/`, user)
             .map((respuesta: Response)=>{
                 let resp = respuesta.json();
                 sessionStorage['jwt'] = resp.token;

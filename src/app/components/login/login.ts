@@ -1,11 +1,13 @@
 import { Component, OnDestroy, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs/Subscription";
+import { Headers, RequestOptions } from '@angular/http';
 import { FormGroup } from "@angular/forms";
 
 import { User } from '../../entities/user';
 import { LoginService } from '../../services/login.service';
 import { UserDataService } from '../../services/userdata.service';
+import { HttpHeaderService } from '../../services/httpheader.service';
 
 @Component({
   selector: 'login',
@@ -23,6 +25,7 @@ export class LoginComponent implements OnDestroy {
     constructor(
         private _loginService: LoginService,
         private _userDataService: UserDataService,
+        private _httpHeaderService: HttpHeaderService,
         private _router: Router) { }
 
     ngOnDestroy(): void {
@@ -36,6 +39,11 @@ export class LoginComponent implements OnDestroy {
         this._loginSubscription = this._loginService.login(user)
         .subscribe(
             (data) => {
+                let token: String = 'JWT ' + sessionStorage['jwt']; //'Basic ZmNhbGxlamFzOmNyMXN0MWFu';
+                let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization':token });
+                let options = new RequestOptions({ headers: headers });
+                this._httpHeaderService.optHeaders = options;
+
                 this._userDataService.currentUser = data;
                 this._router.navigate(["/post"]);
                 this._loginEvent.emit(data);

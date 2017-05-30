@@ -1,16 +1,20 @@
-<div *ngFor="let post of posts" class="contPost">
-    <div>
-        <div style="font-weight:bold;">{{post.title}}</div>
-        <div><img src="{{post.url_media}}" /></div>
-        <div>{{post.intro}}</div>
-        <div>
-            <div>Categorías:</div>
-            <div *ngFor="let category of post.categories">
-                <label>{{category.name}}</label>
+<div>
+    <ul>
+        <li *ngFor="let post of posts" class="contPost">
+            <div>
+                <h3>{{post.title}}</h3>
+                <div *ngIf="post.url_media"><img src="{{post.url_media}}" /></div>
+                <p>{{post.intro}}</p>
+                <!--<div>
+                    <div>Categorías:</div>
+                    <div *ngFor="let category of post.categories">
+                        <label>{{category.name}}</label>
+                    </div>
+                </div>-->
+                <div><b>Por {{post.author_username}}</b></div>
+                <div>Publicado: {{post.publicated_at}}</div>
+                <!--<label>Likes: {{post.likes}}</label>-->
             </div>
-        </div>
-        <div>Por {{post.author.username}}</div>
-        <div>Publicado: {{post.publicate_at}}</div>
-        <label>Likes: {{post.likes}}</label>
-    </div>
+        </li>
+    </ul>
 </div>
